@@ -30,6 +30,7 @@ let postsArr = [
 ]
 
 
+
 ReactDOM.render(
   <React.StrictMode>
     <App
