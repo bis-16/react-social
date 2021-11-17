@@ -1,0 +1,21 @@
+.dialogs{
+    /*grid-area: g-header;*/
+    /*background-color: wheat;*/
+}
+
+.grid{
+    grid-template-columns: 2fr 10fr;
+    display: grid;
+    padding: 20px;
+}
+
+
+.dialog{
+
+}
+.messages{
+
+}
+.message{
+
+}

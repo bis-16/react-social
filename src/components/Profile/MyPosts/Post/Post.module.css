@@ -1,0 +1,13 @@
+.post{
+    grid-area: g-content;
+    background-color: #878083;
+
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+}
+
+img{
+    width: 60px;
+    height: 60px;
+}
