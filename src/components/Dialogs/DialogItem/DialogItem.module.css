@@ -1,0 +1,38 @@
+/*.dialogs{*/
+/*    !*grid-area: g-header;*!*/
+/*    !*background-color: wheat;*!*/
+/*    !*color: #878083;*!*/
+/*}*/
+
+.grid{
+    grid-template-columns: 2fr 10fr;
+    display: grid;
+    padding: 20px;
+}
+
+
+.dialog{
+    background-color: #e7c3d2;
+    display: flex;
+    align-items: center;
+
+}
+
+.avatar{
+    background-color: #878083;
+    border-radius: 50%;
+    /*display: inline-block;*/
+    margin: 5px;
+}
+
+.dialogName{
+
+    /*vertical-align: middle;*/
+}
+
+.messages{
+
+}
+.message{
+
+}

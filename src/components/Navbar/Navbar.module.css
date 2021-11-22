@@ -2,7 +2,7 @@
     grid-area: g-nav;
     background-color: #4475db;
     padding: 20px;
-    min-height: 600px;
+    /*min-height: 600px;*/
 }
 
 .item{

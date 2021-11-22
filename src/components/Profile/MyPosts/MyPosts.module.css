@@ -1,0 +1,12 @@
+.myposts{
+    /*grid-area: g-content;*/
+    background-color: #dbb2c0;
+
+    /*display: inline-block;*/
+    /*margin: 5px;*/
+    padding: 5px;
+}
+
+.addItem{
+
+}

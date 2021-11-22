@@ -3,3 +3,17 @@
     background-color: lightpink;
     padding: 20px;
 }
+
+
+.profileBgBlock{
+    display: block;
+    width: 960px;
+    height: 300px;
+}
+
+.profileBg{
+    /*display: block;*/
+    width: 960px;
+    height: 300px;
+    /*overflow: hidden;*/
+}

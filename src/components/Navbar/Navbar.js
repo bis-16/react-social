@@ -1,11 +1,13 @@
 import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
 import React from "react";
+import FriendsBlock from "./FreindsBlock/FriendsBlock";
 
 function Navbar() {
     return (
-        <div className={`${s.navbar}`}>
-                navbar-text
+        <div>
+            <div className={`${s.navbar}`}>
+                Navbar
 
                 <div >
                     <NavLink className={(navData)=>navData.isActive ? s.active : s.item} to="profile">Profile1</NavLink>
@@ -22,6 +24,9 @@ function Navbar() {
                 <div className={s.item}>
                     <NavLink className={(navData)=>navData.isActive ? s.active : s.item} to={"/settings"}>Settings</NavLink>
                 </div>
+            </div>
+
+            <FriendsBlock />
 
         </div>
     );

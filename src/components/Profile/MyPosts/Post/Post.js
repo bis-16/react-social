@@ -7,9 +7,12 @@ function Post(props) {
         <div className={s.post}>
 
             <img src={logo} alt={"ava"}/>
+
             {props.message}
-            <div>like = {props.likes}</div>
-            <div>dislike = {props.dislikes}</div>
+            <div className={s.counters}>
+                <div>likes:    {props.likes}</div>
+                <div>dislikes: {props.dislikes}</div>
+            </div>
         </div>
     );
 }

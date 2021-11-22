@@ -1,0 +1,28 @@
+h2{
+    color: white;
+}
+
+.friendsBlock{
+    color: white;
+    /*grid-area: g-nav;*/
+    background-color: #3e5482;
+    padding: 5px;
+    /*margin: 20px 0 0 0;*/
+    }
+
+.friendItem{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.avatar{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #ffff86;
+}
+
+.item{
+    color: white;
+    text-decoration: none;
+}

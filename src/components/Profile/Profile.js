@@ -1,17 +1,18 @@
 import s from './Profile.module.css'
-import MyPosts from "./MyPosts/MyPost";
+import MyPosts from "./MyPosts/MyPosts";
 import React from "react";
+import profileBG from "../../tropical-paradise-1000x600.jpg"
 
 function Profile(props) {
     return (
         <div className={`${s.content}`}>
-            {/*<div>*/}
-            {/*    /!*<img src='https://nsr.nso.ru/sites/nsr.nso.ru/wodby_files/files/gerb_1.jpg'>*!/*/}
-            {/*</div>*/}
-            <div>
-                profile-text
+            <div className={s.profileBgBlock}>
+                <img  src={profileBG} className={s.profileBg} alt="bg"/>
             </div>
-            <MyPosts postsArr={props.postsArr}/>
+            {/*<div>*/}
+            {/*    profile-text*/}
+            {/*</div>*/}
+            <MyPosts state={props.state}/>
         </div>
 
     );

@@ -21,8 +21,8 @@ function App(props) {
                 {/*<Dialogs />*/}
                 <div className={"appWrapperContent"}>
                     <Routes> {/*Routes === Switch*/}
-                        <Route path='/dialogs' element={<Dialogs messagesArr={props.messagesArr} dialogsArr={props.dialogsArr}/>} />   {/*element === component*/}
-                        <Route path='/profile' element={<Profile postsArr={props.postsArr}/>} />
+                        <Route path={'/dialogs'} element={<Dialogs state={props.state.dialogsPage} />} />   {/*element === component*/}
+                        <Route path={'/profile'} element={<Profile state={props.state.profilePage} />} />
                         <Route path={'/news'} element={<News/>} />
                         <Route path={'/music'} element={<Music/>} />
                         <Route path={'/settings'} element={<Settings/>} />
