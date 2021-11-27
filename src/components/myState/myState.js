@@ -1,3 +1,5 @@
+import {renderTree} from "../../render";
+
 let state = {
     profilePage: {
         postsArr: [
@@ -25,6 +27,18 @@ let state = {
         ]
     }
 
+}
+
+export let addNewPost = (postMessage) => {
+    let newPost = {
+        id: 5,
+        message: postMessage,
+        likes: 0,
+        dislikes: 0
+    }
+
+    state.profilePage.postsArr.push(newPost)
+    renderTree(state)
 }
 
 export default state;

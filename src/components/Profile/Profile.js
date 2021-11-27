@@ -12,7 +12,7 @@ function Profile(props) {
             {/*<div>*/}
             {/*    profile-text*/}
             {/*</div>*/}
-            <MyPosts state={props.state}/>
+            <MyPosts state={props.state} addNewPost={props.addNewPost}/>
         </div>
 
     );

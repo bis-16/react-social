@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state from "./components/myState/myState";
+import state, {addNewPost} from "./components/myState/myState";
+import {renderTree} from "./render";
 
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App state = {state} />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// addNewPost("qwe");
+renderTree(state)
+
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
