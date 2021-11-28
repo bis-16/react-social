@@ -3,12 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state, {addNewPost} from "./components/myState/myState";
-import {renderTree} from "./render";
+import store from "./myState/myState";
 
+let rerenderTree = (state) => {
 
+    ReactDOM.render(
+        <React.StrictMode>
+            <App
+                state={state}
+                // addNewPost={store.addNewPost.bind(store)}
+                // updateNewPostText={store.updateNewPostText.bind(store)}
+                dispatch = {store.dispatch.bind(store)}
+            />
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
 // addNewPost("qwe");
-renderTree(state)
+rerenderTree(store.getState())
+store.subscribe(rerenderTree)
 
 
 

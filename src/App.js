@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
@@ -22,7 +21,12 @@ function App(props) {
                 <div className={"appWrapperContent"}>
                     <Routes> {/*Routes === Switch*/}
                         <Route path={'/dialogs'} element={<Dialogs state={props.state.dialogsPage} />} />   {/*element === component*/}
-                        <Route path={'/profile'} element={<Profile state={props.state.profilePage} addNewPost={props.addNewPost}/>} />
+                        <Route path={'/profile'} element={<Profile profilePage={props.state.profilePage}
+                                                                   // addNewPost={props.addNewPost}
+                                                                   // updateNewPostText={props.updateNewPostText}/> }
+                                                                   dispatch = {props.dispatch}
+                                                          />}
+                        />
                         <Route path={'/news'} element={<News/>} />
                         <Route path={'/music'} element={<Music/>} />
                         <Route path={'/settings'} element={<Settings/>} />
