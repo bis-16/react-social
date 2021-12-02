@@ -20,11 +20,15 @@ function App(props) {
                 {/*<Dialogs />*/}
                 <div className={"appWrapperContent"}>
                     <Routes> {/*Routes === Switch*/}
-                        <Route path={'/dialogs'} element={<Dialogs state={props.state.dialogsPage} />} />   {/*element === component*/}
+                        <Route path={'/dialogs'} element={<Dialogs dialogsPage={props.state.dialogsPage}
+                                                                   dispatch = {props.dispatch}
+
+                                                          />}
+                        />   {/*element === component*/}
                         <Route path={'/profile'} element={<Profile profilePage={props.state.profilePage}
+                                                                   dispatch = {props.dispatch}
                                                                    // addNewPost={props.addNewPost}
                                                                    // updateNewPostText={props.updateNewPostText}/> }
-                                                                   dispatch = {props.dispatch}
                                                           />}
                         />
                         <Route path={'/news'} element={<News/>} />

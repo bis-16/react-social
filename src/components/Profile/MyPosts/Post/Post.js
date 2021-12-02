@@ -6,14 +6,14 @@ function Post(props) {
     return (
         <div className={s.post}>
 
-            <img src={logo} alt={"ava"}/>
+            <img className={s.avatar} src={logo} alt={"ava"}/>
 
             {props.message}
             <div className={s.counters}>
                 <div>likes:    {props.likes}</div>
                 <div>dislikes: {props.dislikes}</div>
             </div>
-        </div>
+        </div> 
     );
 }
 

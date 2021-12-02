@@ -18,7 +18,10 @@
 
 }
 .message{
-
+/*text-align: right;*/
+}
+.myMessage{
+    text-align: right;
 }
 
 textarea{

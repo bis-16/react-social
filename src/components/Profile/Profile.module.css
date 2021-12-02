@@ -1,7 +1,7 @@
 .content{
     grid-area: g-content;
     background-color: lightpink;
-    padding: 20px;
+    /*padding: 20px;*/
 }
 
 
