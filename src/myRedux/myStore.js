@@ -43,6 +43,7 @@ let store = {
         this._rerenderTree = observer;
     },
 
+
     /*post*/
     // _addNewPost() {
     //     console.log(`myRedux.js>_addNewPost`);
@@ -92,6 +93,8 @@ let store = {
     }
 
 }
+
+store.getState(5)
 
 
 window.store = store;

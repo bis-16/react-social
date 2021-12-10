@@ -8,7 +8,19 @@ export let updateNewPostActionCreator = (text) => {
     return {type: UPDATE_NEW_POST_TEXT, newText: text}
 }
 
-const profileReducer = (state, action) => {
+const initialState = {
+    postsArr: [
+        {id: 1, message: "this is my first post", likes: 54, dislikes: 8},
+        {id: 2, message: "post2", likes: 21, dislikes: 98},
+        {id: 3, message: "post3", likes: 24, dislikes: 48},
+        {id: 4, message: "post4", likes: 64, dislikes: 38},
+        {id: 5, message: "post5", likes: 14, dislikes: 18},
+        {id: 6, message: "post6", likes: 24, dislikes: 58},
+    ],
+    newPostText: "new_text"
+}
+
+const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_NEW_POST: {
@@ -21,18 +33,22 @@ const profileReducer = (state, action) => {
                 likes: 0,
                 dislikes: 0
             }
-            state.postsArr.push(newPost)
-            state.newPostText = ""
-            break;
+            return  {
+                    ...state,
+                    postsArr: [...state.postsArr, newPost], // === stateCopy.postsArr = [...state.postsArr] + postsArr.push(newPost)
+                    newPostText: ""
+            }
         }
         case UPDATE_NEW_POST_TEXT: {
-            state.newPostText = action.newText
-            break;
+            return {
+                    ...state,
+                    newPostText: action.newText // === stateCopy.newPostText = action.newText
+            }
         }
         default: return state
     }
 
-    return state
+    // return state
 }
 
 export default profileReducer;

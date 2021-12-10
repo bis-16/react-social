@@ -3,25 +3,37 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from "./myRedux/myStore";
+// import store from "./myRedux/myStore";
+import store from "./myRedux/reduxStore";
+import {Provider} from "react-redux";
 
-let rerenderTree = (state) => {
+
+// let rerenderTree = (state) => {
 
     ReactDOM.render(
         <React.StrictMode>
-            <App
-                state={state}
-                // addNewPost={store.addNewPost.bind(store)}
-                // updateNewPostText={store.updateNewPostText.bind(store)}
-                dispatch = {store.dispatch.bind(store)}
-            />
+            <Provider store={store}>
+                <App
+                    // store = {store}
+                    // state={state}
+                    // // addNewPost={store.addNewPost.bind(store)}
+                    // // updateNewPostText={store.updateNewPostText.bind(store)}
+                    // dispatch = {store.dispatch.bind(store)}
+                />
+            </Provider>
         </React.StrictMode>,
         document.getElementById('root')
     );
-}
+// }
 // addNewPost("qwe");
-rerenderTree(store.getState())
-store.subscribe(rerenderTree)
+// rerenderTree(store.getState())
+
+//store.subscribe(rerenderTree)
+
+// store.subscribe(()=>{
+//     let state = store.getState()
+//     rerenderTree(state)
+// })
 
 
 

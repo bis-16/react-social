@@ -8,40 +8,25 @@ import {addNewMessageActionCreator, updateNewMessageActionCreator} from "../../m
 
 function Dialogs(props) {
 
+    let state = props.dialogsPage
 
-    let dialogsElements = props.dialogsPage.dialogsArr
+    let dialogsElements = state.dialogsArr
         .map(item => <DialogItem dialog={item.dialog}
                                  id={item.id}
                      />)
 
-    let messagesElements = props.dialogsPage.messagesArr
+    let messagesElements = state.messagesArr
         .map(item => <MessageItem message={item.message}
                                   addNewPost={props.addNewPost}
                      />)
 
-    // let newMessage = React.createRef()
-
-    // let addMessage = () => {
-    //     let text = newMessage.current.value //получение значения из textarea
-    //     console.log('text=',text)
-    //     //props.addNewMessage(text)
-    // }
     let addNewMessage = () => {
-        // let text = newMessage.current.value
-        // props.addNewPost(text)
-        props.dispatch(addNewMessageActionCreator())
-        // console.log('text=',text)
-        // debugger
+        props.addNewMessageCont()
     }
 
     let onMessageChange = (event) => {
-        console.log("dialogs.js>onMessageChange")
-        // let text = newMessage.current.value
-        // props.dispatch(updateNewMessageActionCreator(text))
-        // debugger
-
         let text = event.target.value;
-        props.dispatch(updateNewMessageActionCreator(text))
+        props.onMessageChangeCont(text)
 
     }
 
