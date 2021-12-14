@@ -3,3 +3,28 @@
     /*background-color: wheat;*/
     padding: 20px;
 }
+
+.grid{
+    display: grid;
+
+    grid-template-columns: 1fr 7fr;
+    //grid-template-rows: 100px;
+    background-color: #c68289;
+}
+.gridSub {
+    display: grid;
+    background-color: #bd7179;
+    grid-template-columns: 7fr 3fr;
+}
+
+.gridElement{
+    border: 1px dashed grey;
+    text-align: center;
+}
+
+.photo{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: grey;
+}

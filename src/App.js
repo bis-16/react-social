@@ -9,7 +9,8 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import React from "react";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import Users from "./components/Users/Users";
+import UsersContainer from "./components/Users/UsersContainer";
+// import Users from "./components/Users/Users";
 
 
 function App(props) {
@@ -34,7 +35,7 @@ function App(props) {
                                                                    // store = {props.store}
                                                           />}
                         />
-                        <Route path={'/users'} element={<Users/>} />
+                        <Route path={'/users'} element={<UsersContainer/>} />
                         <Route path={'/news'} element={<News/>} />
                         <Route path={'/music'} element={<Music/>} />
                         <Route path={'/settings'} element={<Settings/>} />

@@ -1,31 +1,30 @@
-import s from './Users.module.css'
 import React from "react";
 import {connect} from "react-redux";
-import MyPosts from "../Profile/MyPosts/MyPosts";
-import {addNewPostActionCreator, updateNewPostActionCreator} from "../../myRedux/profileReducer";
-import {followUserActionCreator, unFollowUserActionCreator} from "../../myRedux/usersReducer";
+import {followUserActionCreator, setUserActionCreator, unFollowUserActionCreator} from "../../myRedux/usersReducer";
+import Users from "./Users";
 
 let mapStateToProps = (state) => {
     return {
-        usersPage: state.usersPage
-
+        usersPage: state.usersPage,
+        usersArr: state.usersPage.usersArr
     }
 }
 let mapDispatchToProps = (dispatch) => {
+    // debugger
     return {
         follow: (userId) => {
-            dispatch(followUserActionCreator())
+            dispatch(followUserActionCreator(userId))
         },
         unfollow: (userId) => {
-            dispatch(unFollowUserActionCreator())
+            dispatch(unFollowUserActionCreator(userId))
         },
-        setUser: (userId) => {
-            dispatch(unFollowUserActionCreator())
+        setUser: (users) => {
+            dispatch(setUserActionCreator(users))
         }
     }
 }
 
-const usersContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+const usersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
 
 
-export default Users;
+export default usersContainer;
