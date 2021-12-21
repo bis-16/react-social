@@ -3,10 +3,10 @@ const UNFOLLOW_USER = 'UNFOLLOW-USER';
 const SET_USERS = 'SET-USERS'
 
 export const followUserActionCreator = (userId) => {
-    return {type: FOLLOW_USER, id: userId}
+    return {type: FOLLOW_USER, userId: userId}
 }
 export const unFollowUserActionCreator = (userId) => {
-    return {type: UNFOLLOW_USER, id: userId}
+    return {type: UNFOLLOW_USER, userId: userId}
 }
 export const setUserActionCreator = (users) => {
     return {type: SET_USERS, usersArr: users}

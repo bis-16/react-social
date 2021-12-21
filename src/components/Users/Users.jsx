@@ -2,6 +2,10 @@ import s from './Users.module.css'
 import React from "react";
 
 function Users(props) {
+
+    // props.setUserF(    )
+
+
     return (<div>
         {
             props.usersArr.map(user =>
@@ -9,11 +13,12 @@ function Users(props) {
                 <div className={`${s.users}, ${s.grid}`}>
                     {/*users-text*/}
                     <div className={s.gridElement}>
-                        <img className={s.photo} src={user.photo}/>
+                        <img className={s.photo} src={user.photo} alt={"userphoto"}/>
                         {user.followed
-                            ? <button onClick={ () => {props.  follow(user.id)} }>follow</button>
-                            : <button onClick={ () => {props.unfollow(user.id);
-                                console.log("click");} }>unfollow</button>
+                            ? <button onClick={ () => {props.unfollowF(user.id)} }>follow</button>
+                            : <button onClick={ () => {props.followF(user.id);
+                                console.log("click unfollow");}
+                                }>unfollow</button>
                         }
 
                     </div>
