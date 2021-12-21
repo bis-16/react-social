@@ -21,6 +21,7 @@ function Users(props) {
                                 }>unfollow</button>
                         }
 
+
                     </div>
                     <div className={s.gridElement}>
                         <div className={s.gridSubElement}>
