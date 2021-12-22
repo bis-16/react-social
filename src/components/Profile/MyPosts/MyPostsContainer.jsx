@@ -1,6 +1,10 @@
-import Post from "./Post/Post";
 import React from "react";
-import {addNewPostActionCreator, updateNewPostActionCreator} from "../../../myRedux/profileReducer";
+import {
+    addNewPostActionCreator,
+    updateNewPostActionCreator,
+    likePostActionCreator,
+    dislikePostActionCreator,
+} from "../../../myRedux/profileReducer";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 
@@ -42,11 +46,15 @@ let mapDispatchToProps = (dispatch) => {
         onPostChangeCont: (text) => {
             let action = updateNewPostActionCreator(text)
             dispatch(action)
+        },
+        likePost: () => {
+            dispatch(likePostActionCreator())
+        },
+        dislikePost: () => {
+            dispatch(dislikePostActionCreator())
         }
     }
 }
 
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
-//
-
 export default MyPostsContainer;

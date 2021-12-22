@@ -6,7 +6,11 @@ import s from "./MyPosts.module.css"
 function MyPosts(props) {
 
     let postsElements = props.profilePage.postsArr
-        .map(post => <Post id={props.id} message={post.message} likes={post.likes} dislikes={post.dislikes}/>)
+        .map(post => <Post id={props.id}
+                           message={post.message}
+                           likes={post.likes}
+                           dislikes={post.dislikes}
+        />)
 
     let newPostElement = React.createRef()
 

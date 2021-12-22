@@ -12,6 +12,8 @@ function Post(props) {
             <div className={s.counters}>
                 <div>likes:    {props.likes}</div>
                 <div>dislikes: {props.dislikes}</div>
+                <button onClick={ () => {props.likePost()} } className={"like"}>+</button>
+                <button onClick={ () => {props.dislikePost()} } className={"dislike"}>-</button>
             </div>
         </div> 
     );
