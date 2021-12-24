@@ -4,7 +4,7 @@ import dialogsReducer from "./dialogsReducer";
 import sidebarReducer from "./sidebarReducer";
 import usersReducer from "./usersReducer";
 
-let reducers = combineReducers({
+let reducers = combineReducers({ //глобальные ветки стэйта которые в нём будут
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     sidebar: sidebarReducer,

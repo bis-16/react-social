@@ -12,12 +12,10 @@ export const setUserActionCreator = (users) => {
     return {type: SET_USERS, usersArr: users}
 }
 
-let photoSrc = 'https://sun9-42.userapi.com/impf/c850228/v850228517/72d31/uvNyv9kJ834.jpg?size=720x1080&quality=96&sign=c0156fc34a218778e7f295ae5f45eb9a&type=album'
+
 const initialState = {
     usersArr: [
-        {id: 1, name: "user1", sex: "male",   followed: false, photo: photoSrc, location: {country: 'Russia', city: 'Novosibirsk'}},
-        {id: 2, name: "user2", sex: "male",   followed: true,  photo: null,     location: {country: 'USA',    city: 'LA'}},
-        {id: 3, name: "user3", sex: "female", followed: true,  photo: null,     location: {country: 'Russia', city: 'Sochi'}},
+
     ]
 }
 
@@ -30,7 +28,10 @@ const usersReducer = (state = initialState, action) => {
                 //usersArr: [...state.usersArr],
                 usersArr: state.usersArr.map(user => {
                     if (user.id === action.userId)
-                        return {...user, followed: true}
+                        return {
+                            ...user,
+                            followed: true
+                            }
                     return user
                 }),
             }
@@ -41,13 +42,19 @@ const usersReducer = (state = initialState, action) => {
                 //usersArr: [...state.usersArr],
                 usersArr: state.usersArr.map(user => {
                     if (user.id === action.userId)
-                        return {...user, followed: false}
+                        return {
+                            ...user,
+                            followed: false
+                        }
                     return user
                 }),
             }
         }
         case SET_USERS: {
-            return {...state, usersArr: [...state.usersArr, ...action.usersArr]}
+            return {
+                ...state,
+                usersArr: [...state.usersArr, ...action.usersArr]
+            }
         }
         default:
             return state

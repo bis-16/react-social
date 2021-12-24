@@ -9,7 +9,7 @@ let mapStateToProps = (state) => {
         usersArr: state.usersPage.usersArr
     }
 }
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch) => { // для передачи дочерней компоненте колбэков
     // debugger
     return {
         followF: (userId) => {
@@ -24,7 +24,7 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const usersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
 
 
-export default usersContainer;
+export default UsersContainer;

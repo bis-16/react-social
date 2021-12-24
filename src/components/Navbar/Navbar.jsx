@@ -1,7 +1,7 @@
 import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
 import React from "react";
-import FriendsBlock from "./FreindsBlock/FriendsBlock";
+import FriendsBlockContainer from "./FreindsBlock/FriendsBlockContainer";
 
 function Navbar() {
     return (
@@ -31,7 +31,8 @@ function Navbar() {
 
             </div>
 
-            <FriendsBlock />
+            {/*<FriendsBlock />*/}
+            <FriendsBlockContainer/>
 
         </div>
     );

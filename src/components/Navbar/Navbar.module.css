@@ -1,13 +1,16 @@
 .navbar{
     grid-area: g-nav;
     background-color: #4475db;
+    /*background-color: #1e1e1e;*/
+    color: #fff;
     padding: 20px;
     /*min-height: 600px;*/
 }
 
 .item{
-    color: white;
+    color: #fff;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .active{
