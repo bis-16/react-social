@@ -61,17 +61,20 @@ export let setUserPhoto = (photo, sex) => {
 }
 
 function Users(props) {
-    if (props.usersArr.length === 0){
-        // axios.get("https://social-network.samuraijs.com/api/1.0/users")
-        //     .then(response => {
-        //         props.setUsersF(response.data.items)
-        //     })
-        // debugger
-        props.setUsersF([
-            {id: 1, name: "Sergio", sex: "male",   followed: false, photo: photoSrc, location: {country: 'Russia', city: 'Novosibirsk'}},
-            {id: 2, name: "Antonio", sex: "male",   followed: true,  photo: null,     location: {country: 'USA',    city: 'LA'}},
-            {id: 3, name: "Rose", sex: "female", followed: true,  photo: null,     location: {country: 'Russia', city: 'Sochi'}},
-        ])
+
+    let getUsers = () => {
+        if (props.usersArr.length === 0){
+            // axios.get("https://social-network.samuraijs.com/api/1.0/users")
+            //     .then(response => {
+            //         props.setUsersF(response.data.items)
+            //     })
+            // debugger
+            props.setUsersF([
+                {id: 1, name: "Sergio", sex: "male",   followed: false, photo: photoSrc, location: {country: 'Russia', city: 'Novosibirsk'}},
+                {id: 2, name: "Antonio", sex: "male",   followed: true,  photo: null,     location: {country: 'USA',    city: 'LA'}},
+                {id: 3, name: "Rose", sex: "female", followed: true,  photo: null,     location: {country: 'Russia', city: 'Sochi'}},
+            ])
+        }
     }
 
     return (<div>
@@ -104,7 +107,7 @@ function Users(props) {
             </div>)
         }
         <div>
-            <button>See more</button>
+            <button onClick={getUsers}>See more</button>
         </div>
     </div>);
 }
