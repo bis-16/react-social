@@ -14,9 +14,10 @@ export const setUserActionCreator = (users) => {
 
 
 const initialState = {
-    usersArr: [
-
-    ]
+    usersArr: [],
+    pageSize: 5,
+    totalUsersCount: 20,
+    currentPage: 1,
 }
 
 const usersReducer = (state = initialState, action) => {
