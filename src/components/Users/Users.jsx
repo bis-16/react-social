@@ -10,7 +10,7 @@ class Users extends React.Component{
         super(props); //если только наследование, то этот кусок можно не писать - это поведение по умолчанию)
     }
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users&page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.setUsersF(response.data.items)
             })
@@ -42,10 +42,11 @@ class Users extends React.Component{
             <div>
                 {pages.map(page =>
                     // {console.log("page=",page)}
-                    <span className={this.props.currentPage === page && s.selectPage}>{page}</span>
+                    <span className={this.props.currentPage === page && s.selectPage}
+                    onClick={() => { this.props.currentPage(page) }}>{page}</span>
                 )}
 
-                {/*<span>1</span>*/}
+                {/*<span>ы1</span>*/}
                 {/*<span className={s.selectPage}>2</span>*/}
             </div>
         {

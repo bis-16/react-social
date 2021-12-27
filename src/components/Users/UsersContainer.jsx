@@ -38,6 +38,7 @@ let mapStateToProps = (state) => {
         usersArr: state.usersPage.usersArr,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage: state.usersPage.currentPage,
     }
 }
 let mapDispatchToProps = (dispatch) => { // для передачи дочерней компоненте колбэков
@@ -51,7 +52,10 @@ let mapDispatchToProps = (dispatch) => { // для передачи дочерн
         },
         setUsersF: (users) => {
             dispatch(setUserActionCreator(users))
-        }
+        },
+        setCurrentPage: (pageNumber) => {
+
+        },
     }
 }
 
