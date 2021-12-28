@@ -2,25 +2,19 @@ const FOLLOW_USER = 'FOLLOW_USER';
 const UNFOLLOW_USER = 'UNFOLLOW_USER';
 const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 
-export const followUserActionCreator = (userId) => {
-    return {type: FOLLOW_USER, userId: userId}
-}
-export const unFollowUserActionCreator = (userId) => {
-    return {type: UNFOLLOW_USER, userId: userId}
-}
-export const setUserActionCreator = (users) => {
-    return {type: SET_USERS, usersArr: users}
-}
-export const setCurrentPageActionCreator = (currentPage) => {
-    return {type: SET_CURRENT_PAGE, currentPage: currentPage}
-}
+export const followUserAC = (userId) => { return {type: FOLLOW_USER, userId: userId} }
+export const unFollowUserAC = (userId) => { return {type: UNFOLLOW_USER, userId: userId} }
+export const setUserAC = (users) => { return {type: SET_USERS, usersArr: users} }
+export const setCurrentPageAC = (currentPage) => { return {type: SET_CURRENT_PAGE, currentPage: currentPage} }
+export const setTotalUsersCountAC = (totalCount) => { return {type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalCount} }
 
 
 const initialState = {
     usersArr: [],
     pageSize: 5,
-    totalUsersCount: 21,
+    totalUsersCount: 0 ,
     currentPage: 1,
 }
 
@@ -58,13 +52,20 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS: {
             return {
                 ...state,
-                usersArr: [...state.usersArr, ...action.usersArr]
+                //usersArr: [...state.usersArr, ...action.usersArr]
+                usersArr: action.usersArr
             }
         }
         case SET_CURRENT_PAGE: {
             return {
                 ...state,
                 currentPage: action.currentPage,
+            }
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            return {
+                ...state,
+                totalUsersCount: action.totalUsersCount,
             }
         }
         default:
