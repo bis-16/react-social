@@ -22,7 +22,6 @@ let Users = (props) => {
 
     return (
         <div>
-            {console.log("users.jsx")}
             <div>
                 {pages.map(page =>
                     // {console.log("page=",page)}
