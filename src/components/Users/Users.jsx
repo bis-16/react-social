@@ -9,7 +9,7 @@ let photoSrc = 'https://sun9-42.userapi.com/impf/c850228/v850228517/72d31/uvNyv9
 
 let Users = (props) => {
 
-    let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
 
     let pages = []
     // for (let i=1; i<=pagesCount; i++){
@@ -22,6 +22,7 @@ let Users = (props) => {
 
     return (
         <div>
+            {console.log("users.jsx")}
             <div>
                 {pages.map(page =>
                     // {console.log("page=",page)}

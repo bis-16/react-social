@@ -37,7 +37,8 @@ class UsersAPIComponent extends React.Component{
     //     }
     // }
     render() {
-        return <Users totalUsersCount = {this.props.totalUsersCount}
+        return (
+            <Users totalUsersCount = {this.props.totalUsersCount}
                       pagesSize = {this.props.pageSize}
                       currentPage = {this.props.currentPage}
                       onPageChanged = {this.props.onPageChanged}
@@ -45,7 +46,7 @@ class UsersAPIComponent extends React.Component{
                       follow = {this.props.followF}
                       unfollow = {this.props.unfollowF}
         />
-    }
+        )}
 }
 /*====================================================================================================================*/
 //
