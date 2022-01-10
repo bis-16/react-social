@@ -10,6 +10,7 @@ import Settings from "./components/Settings/Settings";
 import React from "react";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 // import Users from "./components/Users/Users";
 
 
@@ -23,19 +24,19 @@ function App(props) {
                 {/*<Dialogs />*/}
                 <div className={"appWrapperContent"}>
                     <Routes> {/*Routes === Switch*/}
-                        <Route path={'/dialogs'} element={<DialogsContainer //dialogsPage={props.state.dialogsPage}
+                        <Route path={'/dialogs/*'} element={<DialogsContainer //dialogsPage={props.state.dialogsPage}
                                                                    //dispatch = {props.dispatch}
                                                                    // store = {props.store}
                                                           />}
                         />   {/*element === component*/}
-                        <Route path={'/profile'} element={<Profile // profilePage={props.state.profilePage}
+                        <Route path={'/profile/*'} element={<ProfileContainer // profilePage={props.state.profilePage}
                                                                    // dispatch = {props.dispatch}
                                                                    // addNewPost={props.addNewPost}
                                                                    // updateNewPostText={props.updateNewPostText}/> }
                                                                    // store = {props.store}
                                                           />}
                         />
-                        <Route path={'/users'} element={<UsersContainer/>} />
+                        <Route path={'/users/*'} element={<UsersContainer/>} />
                         <Route path={'/news'} element={<News/>} />
                         <Route path={'/music'} element={<Music/>} />
                         <Route path={'/settings'} element={<Settings/>} />

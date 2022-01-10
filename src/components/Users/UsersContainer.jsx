@@ -7,7 +7,58 @@ import {
     setUserAC,
     unFollowUserAC
 } from "../../myRedux/usersReducer";
-import UsersAPIComponent from "./UsersAPIComponent";
+// import UsersAPIComponent from "./UsersAPIComponent";
+import * as axios from "axios";
+import Users from "./Users";
+
+class UsersAPIComponent extends React.Component{
+    constructor(props) {
+        super(props); //если только наследование, то этот кусок можно не писать - это поведение по умолчанию)
+        console.log("UsersAPIComponent - constructor")
+    }
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsersF(response.data.items)
+                this.props.setTotalUsersCount(response.data.totalCount)
+            })
+    }
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsersF(response.data.items)
+            })
+    }
+    // getUsers = () => {
+    //     if (this.props.usersArr.length === 0){
+    //         axios.get("https://social-network.samuraijs.com/api/1.0/users")
+    //             .then(response => {
+    //                 this.props.setUsersF(response.data.items)
+    //             })
+    //         // debugger
+    //         // this.props.setUsersF([
+    //         //     {id: 1, name: "Sergio", sex: "male",   followed: false, photo: photoSrc, location: {country: 'Russia', city: 'Novosibirsk'}},
+    //         //     {id: 2, name: "Antonio", sex: "male",   followed: true,  photo: null,     location: {country: 'USA',    city: 'LA'}},
+    //         //     {id: 3, name: "Rose", sex: "female", followed: true,  photo: null,     location: {country: 'Russia', city: 'Sochi'}},
+    //         // ])
+    //     }
+    // }
+    render() {
+        //debugger
+        return (
+            // <Users totalUsersCount = {this.props.totalUsersCount}
+            //        pageSize = {this.props.pageSize}
+            //        currentPage = {this.props.currentPage}
+            //        onPageChanged = {this.onPageChanged}
+            //        usersArr = {this.props.usersArr}
+            //        follow = {this.props.followF}
+            //        unfollow = {this.props.unfollowF}
+            // />
+            <Users {...this.props} />
+        )}
+}
+
 //
 // class UsersContainer2 extends React.Component {
 //     componentDidMount() {
@@ -70,6 +121,8 @@ let mapDispatchToProps = (dispatch) => { // для передачи дочерн
 }
 
 const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
+
+/* ****************************** */
 
 
 export default UsersContainer;

@@ -2,6 +2,8 @@ import s from './Users.module.css'
 import React from "react";
 import noUserPhotoF from '../../assets/img/ava_f.jpg'
 import noUserPhotoM from '../../assets/img/ava_m.png'
+import Navbar from "../Navbar/Navbar";
+import {NavLink} from "react-router-dom";
 
 let photoSrc = 'https://sun9-42.userapi.com/impf/c850228/v850228517/72d31/uvNyv9kJ834.jpg?size=720x1080&quality=96&sign=c0156fc34a218778e7f295ae5f45eb9a&type=album'
 
@@ -61,8 +63,10 @@ let Users = (props) => {
                         <div className={`${s.users}, ${s.grid}`}>
                             {/*users-text*/}
                             <div className={s.gridElement}>
-                                <img className={s.photo} src={setUserPhoto(user.photos.small, user.sex)}
-                                     alt={"userphoto"}/>
+                                <NavLink to={`/profile/id${user.id}`} >
+                                    <img className={s.photo} src={setUserPhoto(user.photos.small, user.sex)}
+                                         alt={"userphoto"}/>
+                                </NavLink>
                                 {user.followed
                                     ? <button onClick={() => {
                                         props.unfollowF(user.id)
