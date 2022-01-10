@@ -37,9 +37,10 @@ class UsersAPIComponent extends React.Component{
     //     }
     // }
     render() {
+        //debugger
         return (
             <Users totalUsersCount = {this.props.totalUsersCount}
-                      pagesSize = {this.props.pageSize}
+                      pageSize = {this.props.pageSize}
                       currentPage = {this.props.currentPage}
                       onPageChanged = {this.onPageChanged}
                       usersArr = {this.props.usersArr}

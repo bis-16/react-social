@@ -15,22 +15,42 @@ let Users = (props) => {
     // for (let i=1; i<=pagesCount; i++){
     //     pages.push(i)
     // }
-    for (let i=1; i<=40; i++){
+    for (let i = 1; i <= 100; i++) { //100 заменить на 10 при условии что pageSize>=10
         pages.push(i)
     }
+
+    //
+    let pagesDrawer = (page) => {
+        if (page <= props.currentPage+9
+            && page >= props.currentPage-9) {
+                return <span className={props.currentPage === page && s.selectPage}
+                             onClick={(event) => {
+                                 props.onPageChanged(page)
+                             }}>{page} </span>
+        }
+        if (page === props.currentPage-10
+         || page === props.currentPage+10)
+            return <span> ... </span>
+
+
+    }
+
+
     // debugger
 
     return (
         <div>
             <div>
-                {pages.map(page =>
-                    // {console.log("page=",page)}
-                    <span className={props.currentPage === page && s.selectPage}
-                        // onClick={() => { this.props.setCurrentPage(page) }}>{page}</span>
-                          onClick={(event) => {
-                              props.onPageChanged(page)
-                          }}>{page} </span>
-                )}
+                {/*{pages.map(page =>*/}
+                {/*    // {console.log("page=",page)}*/}
+                {/*    <span className={props.currentPage === page && s.selectPage}*/}
+                {/*        // onClick={() => { this.props.setCurrentPage(page) }}>{page}</span>*/}
+                {/*          onClick={(event) => {*/}
+                {/*              props.onPageChanged(page)*/}
+                {/*          }}>{page} </span>*/}
+                {/*)}*/}
+                {pages.map(page => pagesDrawer(page) )}
+
 
                 {/*<span>ы1</span>*/}
                 {/*<span className={s.selectPage}>2</span>*/}
@@ -46,6 +66,7 @@ let Users = (props) => {
                                 {user.followed
                                     ? <button onClick={() => {
                                         props.unfollowF(user.id)
+                                        console.log("unffollow");
                                     }}>follow</button>
                                     : <button onClick={() => {
                                         props.followF(user.id);
