@@ -6,8 +6,8 @@ import {
     setTotalUsersCountAC,
     setUserAC,
     unFollowUserAC
-} from "../../myRedux/usersReducer";
-// import UsersAPIComponent from "./UsersAPIComponent";
+}
+from "../../myRedux/usersReducer";
 import * as axios from "axios";
 import Users from "./Users";
 
@@ -55,7 +55,7 @@ class UsersAPIComponent extends React.Component{
             //        follow = {this.props.followF}
             //        unfollow = {this.props.unfollowF}
             // />
-            <Users {...this.props} />
+            <Users onPageChanged = {this.onPageChanged} {...this.props} />
         )}
 }
 
@@ -123,6 +123,5 @@ let mapDispatchToProps = (dispatch) => { // для передачи дочерн
 const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
 
 /* ****************************** */
-
 
 export default UsersContainer;
