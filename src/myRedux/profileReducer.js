@@ -2,19 +2,23 @@ const ADD_NEW_POST = 'ADD-NEW-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const LIKE_POST = 'LIKE-POST'
 const DISLIKE_POST = 'DISLIKE-POST'
+const SET_USER_PROFILE = 'SET-USER-PROFILE'
 
-export let addNewPostActionCreator = () => {
+export let addNewPostAC = () => {
     return {type: ADD_NEW_POST}
 }
-export let updateNewPostActionCreator = (text) => {
+export let updateNewPostAC = (text) => {
     return {type: UPDATE_NEW_POST_TEXT, newText: text}
 }
 
-export let  likePostActionCreator = () => {
+export let  likePostAC = () => {
     return {type: LIKE_POST}
 }
-export let  dislikePostActionCreator = () => {
+export let  dislikePostAC = () => {
     return {type: DISLIKE_POST}
+}
+export let setUserProfile = (profile) => {
+    return {type: SET_USER_PROFILE, profile: profile}
 }
 
 const initialState = {
@@ -26,7 +30,8 @@ const initialState = {
         {id: 5, message: "post5", likes: 14, dislikes: 18},
         {id: 6, message: "post6", likes: 24, dislikes: 58},
     ],
-    newPostText: "new_text"
+    newPostText: "new_text",
+    profile: null,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -41,15 +46,15 @@ const profileReducer = (state = initialState, action) => {
                 dislikes: 0
             }
             return  {
-                    ...state,
-                    postsArr: [...state.postsArr, newPost], // === stateCopy.postsArr = [...state.postsArr] + postsArr.push(newPost)
-                    newPostText: ""
+                ...state,
+                postsArr: [...state.postsArr, newPost], // === stateCopy.postsArr = [...state.postsArr] + postsArr.push(newPost)
+                newPostText: ""
             }
         }
         case UPDATE_NEW_POST_TEXT: {
             return {
-                    ...state,
-                    newPostText: action.newText // === stateCopy.newPostText = action.newText
+                ...state,
+                newPostText: action.newText // === stateCopy.newPostText = action.newText
             }
         }
         case LIKE_POST: {
@@ -60,6 +65,12 @@ const profileReducer = (state = initialState, action) => {
         case DISLIKE_POST: {
             return {
 
+            }
+        }
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile,
             }
         }
         default: return state

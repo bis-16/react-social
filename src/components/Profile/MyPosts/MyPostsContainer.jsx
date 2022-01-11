@@ -1,9 +1,9 @@
 import React from "react";
 import {
-    addNewPostActionCreator,
-    updateNewPostActionCreator,
-    likePostActionCreator,
-    dislikePostActionCreator,
+    addNewPostAC,
+    updateNewPostAC,
+    likePostAC,
+    dislikePostAC,
 } from "../../../myRedux/profileReducer";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
@@ -41,17 +41,17 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         addPostCont: () => {
-            dispatch(addNewPostActionCreator())
+            dispatch(addNewPostAC())
         },
         onPostChangeCont: (text) => {
-            let action = updateNewPostActionCreator(text)
+            let action = updateNewPostAC(text)
             dispatch(action)
         },
         likePost: () => {
-            dispatch(likePostActionCreator())
+            dispatch(likePostAC())
         },
         dislikePost: () => {
-            dispatch(dislikePostActionCreator())
+            dispatch(dislikePostAC())
         }
     }
 }
