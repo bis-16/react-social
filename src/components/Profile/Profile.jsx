@@ -3,10 +3,11 @@ import React from "react";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-function Profile() {
+function Profile(props) {
+
     return (
         <div className={`${s.content}`}>
-            <ProfileInfo />
+            <ProfileInfo profile={props.profile} />
             <MyPostsContainer //store = {props.store}
                 // postsArr={props.profilePage.postsArr}
                 // newPostText = {props.profilePage.newPostText}
