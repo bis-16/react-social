@@ -12,24 +12,36 @@ let photoSrc = 'https://sun9-42.userapi.com/impf/c850228/v850228517/72d31/uvNyv9
 let Users = (props) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-
+// debugger
     let pages = []
     // for (let i=1; i<=pagesCount; i++){
     //     pages.push(i)
     // }
-    for (let i = 1; i <= 100; i++) { //100 заменить на 10 при условии что pageSize>=10
+    for (let i = 1; i <= pagesCount; i++) { //100 заменить на 10 при условии что pageSize>=10
         pages.push(i)
     }
 
     //
     let pagesDrawer = (page) => {
+        if (page === 1)
+            return <span onClick={(event) => {
+                props.onPageChanged(page)
+            }}>{page} </span>
+
         if (page <= props.currentPage+9
             && page >= props.currentPage-9) {
-                return <span className={props.currentPage === page && s.selectPage}
+                return (<>
+                    <span className={props.currentPage === page && s.selectPage}
                              onClick={(event) => {
                                  props.onPageChanged(page)
                              }}>{page} </span>
+                </>
+                )
         }
+        if (page === pagesCount)
+            return <span onClick={(event) => {
+                props.onPageChanged(page)
+            }}>{page} </span>
         if (page === props.currentPage-10
          || page === props.currentPage+10)
             return <span> ... </span>

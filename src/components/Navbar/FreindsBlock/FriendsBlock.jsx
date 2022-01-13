@@ -11,7 +11,8 @@ function FriendsBlock(props) {
                  {props.usersArr.map(user => <div className={s.friendItem}>
                      {user.followed &&
                          <div >
-                            <img className={s.avatar} src={setUserPhoto(user.photo, user.sex)} />
+                             {/*setUserPhoto(user.photos.small, user.sex*/}
+                            <img className={s.avatar} src={setUserPhoto(user.photos.small, user.sex)} />
                             <div>{user.name}</div>
                          </div>
 
