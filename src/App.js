@@ -11,6 +11,7 @@ import React from "react";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 // import Users from "./components/Users/Users";
 
 
@@ -19,7 +20,7 @@ function App(props) {
         <Router>
             <div className="app-wrapper">
 
-                <Header/>
+                <HeaderContainer/>
                 <Navbar/>
                 {/*<Dialogs />*/}
                 <div className={"appWrapperContent"}>
@@ -29,7 +30,8 @@ function App(props) {
                                                                    // store = {props.store}
                                                           />}
                         />   {/*element === component*/}
-                        <Route path={'/profile/*'} element={<ProfileContainer // profilePage={props.state.profilePage}
+                        <Route path={'/profile'} element={<ProfileContainer />} />
+                        <Route path={'/profile/:userId'} element={<ProfileContainer // profilePage={props.state.profilePage}
                                                                    // dispatch = {props.dispatch}
                                                                    // addNewPost={props.addNewPost}
                                                                    // updateNewPostText={props.updateNewPostText}/> }
@@ -40,6 +42,7 @@ function App(props) {
                         <Route path={'/news'} element={<News/>} />
                         <Route path={'/music'} element={<Music/>} />
                         <Route path={'/settings'} element={<Settings/>} />
+                        {/*<Route path={'/login'} element={<News/>} />*/}
                     </Routes>
                 </div>
 

@@ -11,13 +11,15 @@ from "../../myRedux/usersReducer";
 import * as axios from "axios";
 import Users from "./Users";
 
+const baseUrl = "https://social-network.samuraijs.com/api/1.0"
+
 class UsersAPIComponent extends React.Component{
     constructor(props) {
         super(props); //если только наследование, то этот кусок можно не писать - это поведение по умолчанию)
         console.log("UsersAPIComponent - constructor")
     }
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(`${baseUrl}/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.setUsersF(response.data.items)
                 this.props.setTotalUsersCount(response.data.totalCount)
@@ -25,7 +27,7 @@ class UsersAPIComponent extends React.Component{
     }
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(`${baseUrl}/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.setUsersF(response.data.items)
             })
