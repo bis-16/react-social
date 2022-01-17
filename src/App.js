@@ -29,6 +29,7 @@ function App(props) {
                                                                    // store = {props.store}
                                                           />}
                         />   {/*element === component*/}
+                        <Route path={'/profile'} element={<ProfileContainer />} />
                         <Route path={'/profile/*'} element={<ProfileContainer // profilePage={props.state.profilePage}
                                                                    // dispatch = {props.dispatch}
                                                                    // addNewPost={props.addNewPost}

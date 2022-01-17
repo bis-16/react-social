@@ -75,7 +75,7 @@ let Users = (props) => {
                         <div className={`${s.users}, ${s.grid}`}>
                             {/*users-text*/}
                             <div className={s.gridElement}>
-                                <NavLink to={`/profile/id${user.id}`} >
+                                <NavLink to={`/profile/${user.id}`} >
                                     <img className={s.photo} src={setUserPhoto(user.photos.small, user.sex)}
                                          alt={"userphoto"}/>
                                 </NavLink>
