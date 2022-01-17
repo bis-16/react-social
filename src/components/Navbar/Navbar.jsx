@@ -4,29 +4,32 @@ import React from "react";
 import FriendsBlockContainer from "./FreindsBlock/FriendsBlockContainer";
 
 function Navbar() {
+
+    const setActive = (navData) => navData.isActive ? s.active : s.item
+
     return (
         <div>
             <div className={`${s.navbar}`}>
                 Navbar
 
                 <div >
-                    <NavLink className={(navData)=>navData.isActive ? s.active : s.item} to="profile">Profile1</NavLink>
+                    <NavLink className={setActive} to="profile">Profile1</NavLink>
                 </div>
                 <div>
-                    <NavLink className={(navData)=>navData.isActive ? s.active : s.item} to="/dialogs">Messages</NavLink>
+                    <NavLink className={setActive} to="/dialogs">Messages</NavLink>
                 </div>
                 <div>
-                    <NavLink className={(navData)=>navData.isActive ? s.active : s.item} to={"/news"}>News</NavLink>
+                    <NavLink className={setActive} to={"/news"}>News</NavLink>
                 </div>
                 <div>
-                    <NavLink className={(navData)=>navData.isActive ? s.active : s.item} to={"/music"}>Music</NavLink>
+                    <NavLink className={setActive} to={"/music"}>Music</NavLink>
                 </div>
                 <div className={s.item}>
-                    <NavLink className={(navData)=>navData.isActive ? s.active : s.item} to={"/settings"}>Settings</NavLink>
+                    <NavLink className={setActive} to={"/settings"}>Settings</NavLink>
                 </div>
                 {/*<div></div>*/}
                 <div>
-                    <NavLink className={(navData)=>navData.isActive ? s.active : s.item} to="/users">Users</NavLink>
+                    <NavLink className={setActive} to="/users">Users</NavLink>
                 </div>
 
             </div>

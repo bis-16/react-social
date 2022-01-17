@@ -17,6 +17,9 @@ class ProfileAPIContainer extends React.Component{
 
     componentDidMount() {
     let userId = this.props.match ? this.props.match.params.userId : '2';
+
+    if (!userId) userId=2;
+
     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
         .then(response => {
             this.props.setUserProfile(response.data)
@@ -53,5 +56,6 @@ let mapStateToProps = (state) => {
 //     }
 // }
 
-const ProfileContainer = connect(mapStateToProps, {setUserProfile})(ProfileMatchContainer);
-export default ProfileContainer;
+//const ProfileContainer = connect(mapStateToProps, {setUserProfile})(ProfileMatchContainer);
+export default connect(mapStateToProps, {setUserProfile})(ProfileMatchContainer);
+// export default ProfileContainer;
