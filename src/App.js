@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
+import {Route, Routes, BrowserRouter} from "react-router-dom";
 import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -17,7 +17,6 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 
 function App(props) {
     return (
-        <Router>
             <div className="app-wrapper">
 
                 <HeaderContainer/>
@@ -47,7 +46,6 @@ function App(props) {
                 </div>
 
             </div>
-        </Router>
     );
 }
 

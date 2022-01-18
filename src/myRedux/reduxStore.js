@@ -16,3 +16,7 @@ let reducers = combineReducers({ //глобальные ветки стэйта 
 let store = createStore(reducers)
 
 export default store
+
+
+
+window.store = store;

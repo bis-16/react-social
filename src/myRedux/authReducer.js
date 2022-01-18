@@ -9,6 +9,7 @@ const initialState = {
     email: null,
     login: null,
     isFetching: false,
+    isAuth: false,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -18,7 +19,8 @@ const authReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                ...action.data //внутри id email login isfetching которые перезатрут такие же из стэйта выше
+                ...action.data, //внутри id email login isfetching которые перезатрут такие же из стэйта выше
+                isAuth: true,
             }
         }
 
