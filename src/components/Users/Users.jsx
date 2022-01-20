@@ -4,8 +4,11 @@ import noUserPhotoF from '../../assets/img/ava_f.jpg'
 import noUserPhotoM from '../../assets/img/ava_m.png'
 import Navbar from "../Navbar/Navbar";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 let photoSrc = 'https://sun9-42.userapi.com/impf/c850228/v850228517/72d31/uvNyv9kJ834.jpg?size=720x1080&quality=96&sign=c0156fc34a218778e7f295ae5f45eb9a&type=album'
+
+const baseUrl = "https://social-network.samuraijs.com/api/1.0"
 
 /*====================================================================================================================*/
 
@@ -81,11 +84,33 @@ let Users = (props) => {
                                 </NavLink>
                                 {user.followed
                                     ? <button onClick={() => {
-                                        props.unfollowF(user.id)
-                                        console.log("unffollow");
+                                        axios.delete(`${baseUrl}/unfollow/${user.id}`,{
+                                            withCredentials:true,
+                                            headers: {
+                                                "API-KEY": "cfa4d2c6-ad13-4c98-8dd0-74740d75c4a1",
+                                            },
+                                        })
+                                            .then(response => {
+                                                if (response.data.resultCode === 0){ //is Auth = true
+                                                    props.unfollowF(user.id);
+                                                }
+                                            })
+                                        console.log("click follow");
                                     }}>follow</button>
                                     : <button onClick={() => {
-                                        props.followF(user.id);
+
+                                        axios.post(`${baseUrl}/follow/${user.id}`,{},{
+                                            withCredentials:true,
+                                            headers: {
+                                                "API-KEY": "cfa4d2c6-ad13-4c98-8dd0-74740d75c4a1",
+                                            },
+                                        })
+                                            .then(response => {
+                                                if (response.data.resultCode === 0){ //is Auth = true
+                                                    props.followF(user.id);
+                                                }
+                                            })
+
                                         console.log("click unfollow");
                                     }
                                     }>unfollow</button>

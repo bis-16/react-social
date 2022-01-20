@@ -17,6 +17,7 @@ class HeaderContainer extends React.Component{
         axios.get(`${baseUrl}/auth/me`, {
             withCredentials: true //Для того, чтобы ваша авторизационная cookie цеплялась к запросам
         })
+
         // axios.get(`${baseUrl}/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
                 //this.props.setUserData(response.data.items)

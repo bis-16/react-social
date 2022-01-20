@@ -23,20 +23,6 @@ function FriendsBlock(props) {
 
 
 
-                {/*<div className={s.friendItem}>*/}
-                {/*    <div className={s.avatar}> </div>*/}
-                {/*    <div>name1</div>*/}
-                {/*</div>*/}
-                {/*<div className={s.friendItem}>*/}
-                {/*    <div className={s.avatar}> </div>*/}
-                {/*    <div>name2</div>*/}
-                {/*</div>*/}
-                {/*<div className={s.friendItem}>*/}
-                {/*    <div className={s.avatar}> </div>*/}
-                {/*    <div>name3</div>*/}
-                {/*</div>*/}
-
-
      </div>
 );
 }

@@ -19,7 +19,9 @@ class UsersAPIComponent extends React.Component{
         console.log("UsersAPIComponent - constructor")
     }
     componentDidMount() {
-        axios.get(`${baseUrl}/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(`${baseUrl}/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{
+            withCredentials:true,
+        })
             .then(response => {
                 this.props.setUsersF(response.data.items)
                 this.props.setTotalUsersCount(response.data.totalCount)
@@ -27,7 +29,9 @@ class UsersAPIComponent extends React.Component{
     }
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
-        axios.get(`${baseUrl}/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(`${baseUrl}/users?page=${pageNumber}&count=${this.props.pageSize}`,{
+            withCredentials:true,
+        })
             .then(response => {
                 this.props.setUsersF(response.data.items)
             })
@@ -123,7 +127,7 @@ let mapDispatchToProps = (dispatch) => { // для передачи дочерн
 }
 
 const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
-
+//const UsersContainer = connect(mapStateToProps, {followUserAC,unFollowUserAC,setUserAC,setCurrentPageAC,setTotalUsersCountAC})(UsersAPIComponent);
 /* ****************************** */
 
 export default UsersContainer;
