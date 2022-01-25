@@ -4,10 +4,10 @@ import {
     followUserAC,
     setCurrentPageAC,
     setTotalUsersCountAC,
-    setUserAC,
+    setUserAC, toggleFollowingInProgressAC,
     unFollowUserAC
 }
-from "../../myRedux/usersReducer";
+    from "../../myRedux/usersReducer";
 import * as axios from "axios";
 import Users from "./Users";
 
@@ -101,6 +101,9 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress,
+
     }
 }
 let mapDispatchToProps = (dispatch) => { // для передачи дочерней компоненте колбэков
@@ -122,12 +125,25 @@ let mapDispatchToProps = (dispatch) => { // для передачи дочерн
         },
         setTotalUsersCount: (totalCount) => {
             dispatch(setTotalUsersCountAC(totalCount))
+        },
+        isFetching: (isFetching) => {
+            dispatch(setTotalUsersCountAC(isFetching))
+        },
+        toggleFollowingInProgress: (isFetching, userId) => {
+            dispatch(toggleFollowingInProgressAC(isFetching, userId))
         }
     }
 }
 
 const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
-//const UsersContainer = connect(mapStateToProps, {followUserAC,unFollowUserAC,setUserAC,setCurrentPageAC,setTotalUsersCountAC})(UsersAPIComponent);
+//const UsersContainer = connect(mapStateToProps, {followUserAC,
+//                                                 unFollowUserAC,
+//                                                 setUserAC,
+//                                                 setCurrentPageAC,
+//                                                 setTotalUsersCountAC,
+//                                                 isFetchingAC,
+//                                                 toggleFollowingInProgressAC
+//                                                 })(UsersAPIComponent);
 /* ****************************** */
 
 export default UsersContainer;

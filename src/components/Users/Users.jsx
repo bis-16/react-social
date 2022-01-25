@@ -82,9 +82,13 @@ let Users = (props) => {
                                     <img className={s.photo} src={setUserPhoto(user.photos.small, user.sex)}
                                          alt={"userphoto"}/>
                                 </NavLink>
+
                                 {user.followed
-                                    ? <button onClick={() => {
-                                        axios.delete(`${baseUrl}/unfollow/${user.id}`,{
+                                    ? <button disabled={props.followingInProgress.some(id => id === user.id)}
+                                        onClick={() => {
+                                          //  debugger
+                                        props.toggleFollowingInProgress(true, user.id)
+                                        axios.delete(`${baseUrl}/follow/${user.id}`,{
                                             withCredentials:true,
                                             headers: {
                                                 "API-KEY": "cfa4d2c6-ad13-4c98-8dd0-74740d75c4a1",
@@ -94,11 +98,13 @@ let Users = (props) => {
                                                 if (response.data.resultCode === 0){ //is Auth = true
                                                     props.unfollowF(user.id);
                                                 }
+                                                props.toggleFollowingInProgress(false, user.id)
                                             })
                                         console.log("click follow");
-                                    }}>follow</button>
-                                    : <button onClick={() => {
-
+                                    }}>unfollow</button>
+                                    : <button disabled={props.followingInProgress.some(id => id === user.id)}
+                                              onClick={() => {
+                                        props.toggleFollowingInProgress(true, user.id)
                                         axios.post(`${baseUrl}/follow/${user.id}`,{},{
                                             withCredentials:true,
                                             headers: {
@@ -109,11 +115,12 @@ let Users = (props) => {
                                                 if (response.data.resultCode === 0){ //is Auth = true
                                                     props.followF(user.id);
                                                 }
+                                                props.toggleFollowingInProgress(false, user.id)
                                             })
 
                                         console.log("click unfollow");
                                     }
-                                    }>unfollow</button>
+                                    }>follow</button>
                                 }
 
                             </div>
