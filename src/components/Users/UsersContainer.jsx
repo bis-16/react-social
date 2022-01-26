@@ -7,11 +7,13 @@ import {
     setUserAC, toggleFollowingInProgressAC,
     unFollowUserAC
 }
-    from "../../myRedux/usersReducer";
+
+from "../../myRedux/usersReducer";
 import * as axios from "axios";
 import Users from "./Users";
+import {usersAPI as userAPI} from "../../api/api";
 
-const baseUrl = "https://social-network.samuraijs.com/api/1.0"
+
 
 class UsersAPIComponent extends React.Component{
     constructor(props) {
@@ -19,21 +21,26 @@ class UsersAPIComponent extends React.Component{
         console.log("UsersAPIComponent - constructor")
     }
     componentDidMount() {
-        axios.get(`${baseUrl}/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{
-            withCredentials:true,
-        })
-            .then(response => {
-                this.props.setUsersF(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
+
+        //this.props.toggleIsFetching(true); //?
+
+        //axios.get(`${baseUrl}/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{
+        //    withCredentials:true,
+        //})
+        userAPI.getUsers(this.props.currentPage, this.props.pageSize)
+            .then(data => {
+                this.props.setUsersF(data.items)
+                this.props.setTotalUsersCount(data.totalCount)
             })
     }
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
-        axios.get(`${baseUrl}/users?page=${pageNumber}&count=${this.props.pageSize}`,{
-            withCredentials:true,
-        })
-            .then(response => {
-                this.props.setUsersF(response.data.items)
+        // axios.get(`${baseUrl}/users?page=${pageNumber}&count=${this.props.pageSize}`,{
+        //     withCredentials:true,
+        // })
+        userAPI.getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
+                this.props.setUsersF(data.items)
             })
     }
     // getUsers = () => {

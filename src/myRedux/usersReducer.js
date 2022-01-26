@@ -34,7 +34,7 @@ const usersReducer = (state = initialState, action) => {
                 usersArr: state.usersArr.map(user => {
                     if (user.id === action.userId)
                         return {
-                            ...user,
+                            ...user, //
                             followed: true
                             }
                     return user
@@ -43,7 +43,7 @@ const usersReducer = (state = initialState, action) => {
         }
         case UNFOLLOW_USER: {
             return  {
-                ...state,
+                ...state,                                           //let stateCopy = {...state}; return stateCopy
                 //usersArr: [...state.usersArr],
                 usersArr: state.usersArr.map(user => {
                     if (user.id === action.userId)
@@ -93,7 +93,8 @@ const usersReducer = (state = initialState, action) => {
             return state
     }
 
-
 }
+
+const getUsers = (dispatch) => {} // санка - функция которая внутри себя диспатчит другие обычные экшены
 
 export default usersReducer;
