@@ -1,3 +1,5 @@
+import {usersAPI as userAPI} from "../api/api";
+
 const FOLLOW_USER = 'FOLLOW_USER';
 const UNFOLLOW_USER = 'UNFOLLOW_USER';
 const SET_USERS = 'SET_USERS'
@@ -6,13 +8,13 @@ const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 
-export const followUserAC = (userId) => { return {type: FOLLOW_USER, userId: userId} }
-export const unFollowUserAC = (userId) => { return {type: UNFOLLOW_USER, userId: userId} }
-export const setUserAC = (users) => { return {type: SET_USERS, usersArr: users} }
-export const setCurrentPageAC = (currentPage) => { return {type: SET_CURRENT_PAGE, currentPage: currentPage} }
-export const setTotalUsersCountAC = (totalCount) => { return {type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalCount} }
-export const toggleIsFetchingAC = (isFetching) => { return {type: TOGGLE_IS_FETCHING, isFetching: isFetching} }
-export const toggleFollowingInProgressAC = (isFetching, userId) => { return {type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching: isFetching, userId} }
+export const followUser = (userId) => { return {type: FOLLOW_USER, userId: userId} }
+export const unFollowUser = (userId) => { return {type: UNFOLLOW_USER, userId: userId} }
+export const setUser = (users) => { return {type: SET_USERS, usersArr: users} }
+export const setCurrentPage = (currentPage) => { return {type: SET_CURRENT_PAGE, currentPage: currentPage} }
+export const setTotalUsersCount = (totalCount) => { return {type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalCount} }
+export const toggleIsFetching = (isFetching) => { return {type: TOGGLE_IS_FETCHING, isFetching: isFetching} }
+export const toggleFollowingInProgress = (isFetching, userId) => { return {type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching: isFetching, userId} }
 
 
 const initialState = {
@@ -95,6 +97,21 @@ const usersReducer = (state = initialState, action) => {
 
 }
 
-const getUsers = (dispatch) => {} // санка - функция которая внутри себя диспатчит другие обычные экшены
+export const getUsersThunkCreator = (currentPage, pageSize) => { //санкакреатор - ф-я которая может что-то принимать и возвращает санку с замыканием на это что-то
+   return (dispatch) => { // санка - функция делает асинхронную работу и которая внутри себя диспатчит другие обычные экшены
+        //this.props.toggleIsFetching(true)
+        dispatch(toggleIsFetching(true))
 
+        //userAPI.getUsers(this.props.currentPage, this.props.pageSize)
+        userAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                //this.props.toggleIsFetching(false)
+                //this.props.setUsersF(data.items)
+                //this.props.setTotalUsersCount(data.totalCount)
+                dispatch(toggleIsFetching(false))
+                dispatch(setUser(data.items))
+                dispatch(setTotalUsersCount(data.totalCount))
+            })
+    }
+}
 export default usersReducer;
